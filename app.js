@@ -1,9 +1,10 @@
 const fs = require('fs');
 const express = require('express');
-const { get } = require('http');
+const morgan = require('morgan');
 
 const app = express();
 
+app.use(morgan('dev'));
 app.use(express.json());
 
 const toursFilePath = `${__dirname}/dev-data/data/tours-simple.json`;
