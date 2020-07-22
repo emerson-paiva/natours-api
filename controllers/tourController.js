@@ -61,6 +61,7 @@ const updateTour = async ({ params, body }, res) => {
     const { id } = params;
     const tour = await Tour.findByIdAndUpdate(id, body, {
       new: true,
+      runValidators: true,
     });
 
     res.status(200).json({
