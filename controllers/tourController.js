@@ -71,7 +71,7 @@ const updateTour = async ({ params, body }, res) => {
       },
     });
   } catch (error) {
-    res.status(400).json({
+    res.status(404).json({
       status: 'failure',
       message: error,
     });
@@ -81,16 +81,14 @@ const updateTour = async ({ params, body }, res) => {
 const deleteTour = async ({ params }, res) => {
   try {
     const { id } = params;
-    const tour = await Tour.findByIdAndDelete(id);
+    await Tour.findByIdAndDelete(id);
 
     res.status(200).json({
       status: 'success',
-      data: {
-        tour,
-      },
+      data: null,
     });
   } catch (error) {
-    res.status(400).json({
+    res.status(404).json({
       status: 'failure',
       message: error,
     });
